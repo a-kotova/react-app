@@ -34,6 +34,7 @@ export const SignIn = ({ googleSignInStart, emailSignInStart }) => {
           label="email"
           handleChange={handleChange}
           required
+          data-test="sign-in-email"
         />
         <FormInput
           name="password"
@@ -42,6 +43,7 @@ export const SignIn = ({ googleSignInStart, emailSignInStart }) => {
           value={password}
           handleChange={handleChange}
           required
+          data-test="sign-in-password"
         />
         <SignInButtonsContainer>
           <CustomButton type="submit">Sign In</CustomButton>

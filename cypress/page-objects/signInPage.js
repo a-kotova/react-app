@@ -4,11 +4,11 @@ class SignIn {
   }
 
   typeSignInEmail(email) {
-    return cy.get('.sc-iJuUWI input[type="email"]').type(email);
+    return cy.get('input[data-test="sign-in-email"]').type(email);
   }
 
   typeSignInPassword(password) {
-    return cy.get('.sc-iJuUWI input[type="password"]').type(password);
+    return cy.get('input[data-test="sign-in-password"]').type(password);
   }
 
   clickSignInCTA() {
