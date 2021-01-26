@@ -49,6 +49,4 @@ client/yarn-error.log*
 
 client/.idea/
 
-debug.log
-package-lock.json
 cypress/videos/
