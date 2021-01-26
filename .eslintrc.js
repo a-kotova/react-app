@@ -10,7 +10,7 @@ module.exports = {
   ],
   extends: [
     'airbnb-base',
-      'plugin:cypress/recommended'
+    'plugin:cypress/recommended'
   ],
   parserOptions: {
     ecmaVersion: 9,
