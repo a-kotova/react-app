@@ -8,10 +8,6 @@ export class BasePage {
     return cy.get('input[type="search"]');
   }
 
-  focusInSearchBox() {
-    this.searchBox.click();
-  }
-
   get shopCTA() {
     return cy.get('.sc-fFubgz[href="/shop"]');
   }
@@ -30,6 +26,10 @@ export class BasePage {
 
   get cartIcon() {
     cy.get('.sc-bdfBwQ.flWUgh');
+  }
+
+  focusInSearchBox() {
+    this.searchBox.click();
   }
 
   clickOnCartIcon() {

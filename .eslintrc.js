@@ -21,6 +21,7 @@ module.exports = {
       'cypress/no-unnecessary-waiting': 'error',
       'cypress/assertion-before-screenshot': 'warn',
       'cypress/no-force': 'warn',
-      'cypress/no-async-tests': 'error'
+      'cypress/no-async-tests': 'error',
+      "class-methods-use-this": 0
   },
 };
