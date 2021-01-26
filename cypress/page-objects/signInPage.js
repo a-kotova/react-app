@@ -1,42 +1,81 @@
-class SignIn {
+import { BasePage } from './basePage';
+
+class SignIn extends BasePage {
+
   navigateToSignInPage() {
     cy.visit('/signing');
   }
 
-  typeSignInEmail(email) {
-    return cy.get('input[data-test="sign-in-email"]').type(email);
+  get signInEmailField() {
+    return cy.get('input[data-test="sign-in-email"]');
   }
 
-  typeSignInPassword(password) {
-    return cy.get('input[data-test="sign-in-password"]').type(password);
+  enterSignInEmail(email) {
+    this.signInEmailField.type(email);
   }
 
-  clickSignInCTA() {
-    return cy.get('button').contains('Sign In').click();
+  get signInPasswordField() {
+    return cy.get('input[data-test="sign-in-password"]');
   }
 
-  typeSignUpName(name) {
-    return cy.get('.sc-citwmv input[type="text"]').type(name);
+  enterSignInPassword(password) {
+    this.signInPasswordField.type(password);
   }
 
-  typeSignUpEmail(email) {
-    return cy.get('.sc-citwmv input[type="email"]').type(email);
+  get signInCTA() {
+    return cy.get('button').contains('Sign In');
   }
 
-  typeSignUpPassword(password) {
-    return cy.get('.sc-citwmv input[name="password"]').type(password);
+  submitSignInForm() {
+    this.signInCTA.click();
   }
 
-  confirmSignUpPassword(confirmPassword) {
-    return cy.get('.sc-citwmv input[name="confirmPassword"]').type(confirmPassword);
+  get signUpNameField() {
+    return cy.get('.sc-citwmv input[type="text"]');
   }
 
-  clickSignUpCTA() {
-    return cy.get('button').contains('Sign Up').click();
+  enterSignUpName(name) {
+    this.signUpNameField.type(name);
   }
 
-  clickSignInWithGoogleCTA() {
-    return cy.get('button').contains('Sign In with Google').click();
+  get signUpEmailField() {
+    return cy.get('.sc-citwmv input[type="email"]');
+  }
+
+  enterSignUpEmail(email) {
+    this.signUpEmailField.type(email);
+  }
+
+  get signUpPassword() {
+    return cy.get('.sc-citwmv input[name="password"]');
+  }
+
+  enterSignUpPassword(password) {
+    this.signUpPassword.type(password);
+  }
+
+  get confirmSignUpPassword() {
+    return cy.get('.sc-citwmv input[name="confirmPassword"]');
+  }
+
+  enterConfirmSignUpPassword(confirmPassword) {
+    this.confirmSignUpPassword.type(confirmPassword);
+  }
+
+  get signUpCTA() {
+    return cy.get('button').contains('Sign Up');
+  }
+
+  submitSignUpForm() {
+    this.signUpCTA.click();
+  }
+
+  get signInWithGoogle() {
+    return cy.get('button').contains('Sign In with Google');
+  }
+
+  startGoogleSignIn() {
+    this.signInWithGoogle.click();
   }
 }
 

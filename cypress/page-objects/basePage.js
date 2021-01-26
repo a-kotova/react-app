@@ -1,31 +1,38 @@
-class Header {
-  getHomeCTA() {
+export class BasePage {
+
+  get homeCTA() {
     return cy.get('.sc-kstrdz a[href="/"]');
   }
 
-  focusInSearchBox() {
-    return cy.get('input[type="search"]').click();
+  get searchBox() {
+    return cy.get('input[type="search"]');
   }
 
-  getShopCTA() {
+  focusInSearchBox() {
+    this.searchBox.click();
+  }
+
+  get shopCTA() {
     return cy.get('.sc-fFubgz[href="/shop"]');
   }
 
-  getContactCTA() {
+  get contactCTA() {
     return cy.get('.sc-fFubgz[href="/contact"]');
   }
 
-  getSignInCTA() {
+  get signInCTA() {
     return cy.get('.sc-fFubgz[href="/signing"]');
   }
 
-  getSignOutCTA() {
+  get signOutCTA() {
     return cy.get('div').contains('SIGN OUT');
   }
 
+  get cartIcon() {
+    cy.get('.sc-bdfBwQ.flWUgh');
+  }
+
   clickOnCartIcon() {
-    cy.get('.sc-bdfBwQ.flWUgh').click();
+    this.cartIcon.click();
   }
 }
-
-export default new Header();
