@@ -219,4 +219,3 @@ const mockedState = {
 };
 
 export default mockedState;
-
