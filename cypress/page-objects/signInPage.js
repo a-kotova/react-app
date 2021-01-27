@@ -10,7 +10,7 @@ class SignIn extends BasePage {
     return cy.get('input[data-test="sign-in-password"]');
   }
 
-  get signInIcon() {
+  get signInCTA() {
     return cy.get('button').contains('Sign In');
   }
 
@@ -47,7 +47,7 @@ class SignIn extends BasePage {
   }
 
   submitSignInForm() {
-    this.signInIcon.click();
+    this.signInCTA.click();
   }
 
   enterSignUpName(name) {

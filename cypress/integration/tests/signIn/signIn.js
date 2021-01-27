@@ -2,6 +2,7 @@ import SignIn from '../../../page-objects/signInPage';
 import credentials from '../../../fixtures/credentials.json';
 
 describe('Sign In', () => {
+
   it('TA-1: User is able to sign in with valid credentials', () => {
     SignIn.open('/signing');
     SignIn.enterSignInEmail(credentials.emailValid);
@@ -44,5 +45,14 @@ describe('Sign In', () => {
     cy.url().then((url) => {
       expect(url).to.include('/signing');
     });
+  });
+
+  it('TA-7: User is able to Sign Out', () => {
+    SignIn.open('/signing');
+    SignIn.enterSignInEmail(credentials.emailValid);
+    SignIn.enterSignInPassword(credentials.passwordValid);
+    SignIn.submitSignInForm();
+    SignIn.signOut();
+    SignIn.signInIcon.should('be.visible');
   });
 });
