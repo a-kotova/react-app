@@ -14,22 +14,31 @@ describe('Sign In', () => {
 
   it('TA-2: User unable to sign in with a wrong password', () => {
     SignInPage.signIn(credentials.email.valid, credentials.password.invalid);
-    SignInPage.signInError.should('contain.text', errorMessages.invalidOrMissingPassword);
+    SignInPage.signInError.should('contain', errorMessages.invalidOrMissingPassword);
   });
 
   it('TA-3: User unable to sign in with an unregistered email', () => {
     SignInPage.signIn(credentials.email.unregistered, credentials.password.valid);
-    SignInPage.signInError.should('contain.text', errorMessages.unregisteredEmail);
+    SignInPage.signInError.should('contain', errorMessages.unregisteredEmail);
   });
 
   it('TA-4: User unable to sign in with missing email', () => {
     SignInPage.signIn(' ', credentials.password.valid);
     SignInPage.signInIcon.should('be.visible');
+    SignInPage.emptySignInEmailField.should('have.length', 1);
+    SignInPage.emptySignInEmailField.then(($input) => {
+      expect($input[0].validationMessage).to.eq(errorMessages.emptyEmailOrPasswordField);
+    });
   });
 
   it('TA-5: User unable to sign in with missing password', () => {
-    SignInPage.signIn(credentials.email.valid, ' ');
+    SignInPage.enterSignInEmail(credentials.email.valid);
+    SignInPage.submitSignInForm();
     SignInPage.signInIcon.should('be.visible');
+    SignInPage.emptySignInPasswordField.should('have.length', 1);
+    SignInPage.emptySignInPasswordField.then(($input) => {
+      expect($input[0].validationMessage).to.eq(errorMessages.emptyEmailOrPasswordField);
+    });
   });
 
   it('TA-7: User is able to Sign Out', () => {

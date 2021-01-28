@@ -38,6 +38,14 @@ class SignInPage extends BasePage {
     return cy.get('[data-test="sign-in-error"]');
   }
 
+  get emptySignInEmailField() {
+    return cy.get('input[data-test="sign-in-email"]:invalid');
+  }
+
+  get emptySignInPasswordField() {
+    return cy.get('input[data-test="sign-in-password"]:invalid');
+  }
+
   enterSignInEmail(email) {
     this.signInEmailField.type(email);
   }
