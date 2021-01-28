@@ -1,5 +1,6 @@
 import SignIn from '../../../page-objects/signInPage';
 import credentials from '../../../fixtures/credentials.json';
+import errorMessages from '../../../fixtures/errorMessages.json';
 
 describe('Sign In', () => {
   beforeEach(() => {
@@ -17,14 +18,14 @@ describe('Sign In', () => {
     SignIn.enterSignInEmail(credentials.email.valid);
     SignIn.enterSignInPassword(credentials.passwordInvalid);
     SignIn.submitSignInForm();
-    SignIn.signInError.should('contain.text', 'The password is invalid or the user does not have a password.');
+    SignIn.signInError.should('contain.text', errorMessages.invalidOrMissingPassword);
   });
 
   it('TA-3: User unable to sign in with an unregistered email', () => {
     SignIn.enterSignInEmail(credentials.email.unregistered);
     SignIn.enterSignInPassword(credentials.passwordValid);
     SignIn.submitSignInForm();
-    SignIn.signInError.should('contain.text', 'There is no user record corresponding to this identifier. The user may have been deleted.');
+    SignIn.signInError.should('contain.text', errorMessages.unregisteredEmail);
   });
 
   it('TA-4: User unable to sign in with missing email', () => {
