@@ -1,6 +1,6 @@
 import BasePage from './basePage';
 
-class SignIn extends BasePage {
+class SignInPage extends BasePage {
 
   get signInEmailField() {
     return cy.get('input[data-test="sign-in-email"]');
@@ -69,6 +69,12 @@ class SignIn extends BasePage {
   submitSignUpForm() {
     this.signUpCTA.click();
   }
+
+  signIn(email, password) {
+    this.enterSignInEmail(email);
+    this.enterSignInPassword(password);
+    this.submitSignInForm();
+  }
 }
 
-export default new SignIn();
+export default new SignInPage();
