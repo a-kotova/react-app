@@ -1,6 +1,6 @@
-import { BasePage } from './basePage';
+import BasePage from './basePage';
 
-class SignIn extends BasePage {
+class SignInPage extends BasePage {
 
   get signInEmailField() {
     return cy.get('input[data-test="sign-in-email"]');
@@ -30,16 +30,20 @@ class SignIn extends BasePage {
     return cy.get('.sc-citwmv input[name="confirmPassword"]');
   }
 
-  get signInWithGoogle() {
-    return cy.get('button').contains('Sign In with Google');
-  }
-
   get signUpCTA() {
     return cy.get('button').contains('Sign Up');
   }
 
-  navigateToSignInPage() {
-    cy.visit('/signing');
+  get signInError() {
+    return cy.get('[data-test="sign-in-error"]');
+  }
+
+  get emptySignInEmailField() {
+    return cy.get('input[data-test="sign-in-email"]:invalid');
+  }
+
+  get emptySignInPasswordField() {
+    return cy.get('input[data-test="sign-in-password"]:invalid');
   }
 
   enterSignInEmail(email) {
@@ -74,9 +78,11 @@ class SignIn extends BasePage {
     this.signUpCTA.click();
   }
 
-  startGoogleSignIn() {
-    this.signInWithGoogle.click();
+  signIn(email, password) {
+    this.enterSignInEmail(email);
+    this.enterSignInPassword(password);
+    this.submitSignInForm();
   }
 }
 
-export default new SignIn();
+export default new SignInPage();

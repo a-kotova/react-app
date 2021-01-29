@@ -22,6 +22,7 @@ module.exports = {
       'cypress/assertion-before-screenshot': 'warn',
       'cypress/no-force': 'warn',
       'cypress/no-async-tests': 'error',
-      "class-methods-use-this": 0
+      'class-methods-use-this': 0,
+      'linebreak-style': ['error', 'windows']
   },
 };

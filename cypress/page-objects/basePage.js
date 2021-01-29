@@ -1,38 +1,23 @@
-export class BasePage {
-
-  get homeCTA() {
-    return cy.get('.sc-kstrdz a[href="/"]');
-  }
-
-  get searchBox() {
-    return cy.get('input[type="search"]');
-  }
-
-  get shopCTA() {
-    return cy.get('.sc-fFubgz[href="/shop"]');
-  }
-
-  get contactCTA() {
-    return cy.get('.sc-fFubgz[href="/contact"]');
-  }
-
-  get signInCTA() {
+class BasePage {
+  get signInIcon() {
     return cy.get('.sc-fFubgz[href="/signing"]');
   }
 
-  get signOutCTA() {
-    return cy.get('div').contains('SIGN OUT');
+  get signOutIcon() {
+    return cy.get('[data-test="sign-out-button"]');
   }
 
-  get cartIcon() {
-    cy.get('.sc-bdfBwQ.flWUgh');
+  get signUpFooterLink() {
+    return cy.get('li a[href="/signing"]');
   }
 
-  focusInSearchBox() {
-    this.searchBox.click();
+  open(urlPath) {
+    cy.visit(urlPath);
   }
 
-  clickOnCartIcon() {
-    this.cartIcon.click();
+  signOut() {
+    this.signOutIcon.click();
   }
 }
+
+export default BasePage;
