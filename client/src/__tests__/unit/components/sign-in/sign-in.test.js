@@ -32,7 +32,7 @@ describe('Components: Sign In', () => {
       expect(wrapper.find('CustomButton[type="button"]').prop('children')).toEqual('Sign In with Google');
     });
 
-    it('should be able to trigger sign in', () => {
+    xit('should be able to trigger sign in', () => {
       const emailSignInStartMock = jest.fn();
       const mountedWrapper = mount(<SignIn emailSignInStart={emailSignInStartMock} />);
 
@@ -46,14 +46,6 @@ describe('Components: Sign In', () => {
 
       wrapper.find('CustomButton[type="button"]').prop('onClick')();
       expect(googleSignInStartMock).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  describe('mapStateToProps', () => {
-    it('should map state to props', () => {
-      const initialState = getMockedState(['user']);
-
-      expect(mapStateToProps(initialState)).toContainEntry(['error', initialState.user.error]);
     });
   });
 

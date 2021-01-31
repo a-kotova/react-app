@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { signUpStart } from '../../redux/user/user.actions';
 import { SignUpContainer, SignUpTitle } from './sign-up.styles';
-
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
@@ -31,6 +30,15 @@ export const SignUp = ({ signUpStart }) => {
       return;
     }
 
+    if (
+      (!email || email === ' ')
+      || (!displayName || displayName === ' ')
+      || (!password || password === ' ')
+      || (!confirmPassword || confirmPassword === ' ')
+    ) {
+      return null;
+    }
+
     signUpStart(email, password, displayName);
   };
 
@@ -47,6 +55,7 @@ export const SignUp = ({ signUpStart }) => {
           handleChange={handleChange}
           label="name"
           required
+          data-test="sign-up-name"
         />
         <FormInput
           type="email"
@@ -55,6 +64,7 @@ export const SignUp = ({ signUpStart }) => {
           handleChange={handleChange}
           label="email"
           required
+          data-test="sign-up-email"
         />
         <FormInput
           type="password"
@@ -63,6 +73,7 @@ export const SignUp = ({ signUpStart }) => {
           handleChange={handleChange}
           label="password"
           required
+          data-test="sign-up-password"
         />
         <FormInput
           type="password"
@@ -71,8 +82,14 @@ export const SignUp = ({ signUpStart }) => {
           handleChange={handleChange}
           label="confirm password"
           required
+          data-test="sign-up-confirm-password"
         />
-        <CustomButton type="submit">Sign Up</CustomButton>
+        <CustomButton
+          type="submit"
+          data-test="sign-up-submit"
+        >
+          Sign Up
+        </CustomButton>
       </form>
     </SignUpContainer>
   );
