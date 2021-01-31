@@ -7,10 +7,6 @@ class BasePage {
     return cy.get('[data-test="sign-out-button"]');
   }
 
-  get signUpFooterLink() {
-    return cy.get('li a[href="/signing"]');
-  }
-
   open(urlPath) {
     cy.visit(urlPath);
   }
