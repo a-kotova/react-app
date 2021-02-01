@@ -14,7 +14,7 @@ class ShopPage extends BasePage {
     return selectedItem;
   }
 
-  pickAnyProduct(listOfProducts) {
+  pickRandomProduct(listOfProducts) {
     const selectedCategory = this.selectCategory(listOfProducts);
     const pickedProduct = this.selectProduct(selectedCategory);
     return pickedProduct;

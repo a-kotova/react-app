@@ -11,9 +11,7 @@ class CheckoutPage extends BasePage {
 
   getCartQuantity() {
     return this.cartQuantity.then(($quantity) => {
-      let quantity = $quantity.text();
-      quantity = Number.parseInt(quantity, 10);
-      return cy.wrap(quantity);
+      return cy.wrap(Number.parseInt($quantity.text(), 10));
     });
   }
 
@@ -23,10 +21,7 @@ class CheckoutPage extends BasePage {
 
   getTotal() {
     return this.total.then(($total) => {
-      let total = $total.text();
-      total = total.match(/\d+$/);
-      total = Number.parseInt(total[0], 10);
-      return cy.wrap(total);
+      return cy.wrap(Number.parseInt($total.text().match(/\d+$/)[0], 10));
     });
   }
 
