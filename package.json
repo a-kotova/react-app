@@ -9,8 +9,8 @@
     "start": "node server.js",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "server:start": "wait-on http://localhost:3000",
-    "cy:run:signIn": "node_modules\\.bin\\cypress run -b chrome --headless --spec \"cypress/integration/tests/signIn/*\"",
-    "cy:run:checkout": "node_modules\\.bin\\cypress run -b chrome --headless --spec \"cypress/integration/tests/checkout/*\""
+    "cy:run": "node_modules\\.bin\\cypress run -b chrome --headless",
+    "cy:run:sanity": "for /l %x in (1, 1, 10) do yarn cy:run"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
