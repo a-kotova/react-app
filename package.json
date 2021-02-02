@@ -10,7 +10,8 @@
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "server:start": "wait-on http://localhost:3000",
     "cy:run": "node_modules\\.bin\\cypress run -b chrome --headless",
-    "cy:run:sanity": "for /l %x in (1, 1, 10) do yarn cy:run"
+    "cy:run:sanity": "for /l %x in (1, 1, 10) do yarn cy:run",
+    "cy:sanity:mac": "for i in {1..10}; do yarn cy:run; done"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

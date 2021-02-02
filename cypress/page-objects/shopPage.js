@@ -23,9 +23,9 @@ class ShopPage extends BasePage {
     this.open(pickedItem.linkUrl);
     cy.get(`div[name="${pickedItem.name}"]`).parent().find('button').invoke('show')
       .contains('Add to Cart')
-      .then(($CTA) => {
+      .then((CTA) => {
         for (let i = 0; i < quantity; i++) {
-          cy.wrap($CTA).click();
+          cy.wrap(CTA).click();
         }
       });
   }
