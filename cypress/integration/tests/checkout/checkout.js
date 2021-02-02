@@ -1,9 +1,6 @@
-import Chance from 'Chance';
 import CheckoutPage from '../../../page-objects/checkoutPage';
 import products from '../../../fixtures/products.json';
 import ShopPage from '../../../page-objects/shopPage';
-
-const chance = new Chance();
 
 describe('Checkout', () => {
   let randomProduct;
