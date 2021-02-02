@@ -13,7 +13,7 @@ describe('Checkout', () => {
   });
 
   it('TA-20: Cart items count should be equal to number of added products', () => {
-    const quantity = chance.integer({ min: 1, max: 12 });
+    const quantity = Cypress._.random(1, 12);
     ShopPage.navigateToCategory(randomProduct);
     ShopPage.addProductToCart(randomProduct, quantity);
     CheckoutPage.getCartQuantity().should('eq', quantity);
