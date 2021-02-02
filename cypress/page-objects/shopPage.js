@@ -1,5 +1,5 @@
-import BasePage from './basePage';
 import Chance from 'Chance';
+import BasePage from './basePage';
 
 const chance = new Chance();
 
@@ -8,19 +8,18 @@ class ShopPage extends BasePage {
     return chance.pickone(allCategories.collections);
   }
 
-  selectProduct(selectedCategory) {
+  pickRandomProduct(listOfProducts) {
+    const selectedCategory = this.selectCategory(listOfProducts);
     const selectedItem = chance.pickone(selectedCategory.items);
     selectedItem.linkUrl = selectedCategory.linkUrl;
     return selectedItem;
   }
 
-  pickRandomProduct(listOfProducts) {
-    const selectedCategory = this.selectCategory(listOfProducts);
-    return this.selectProduct(selectedCategory);
+  navigateToCategory(pickedItem) {
+    this.open(pickedItem.linkUrl);
   }
 
   addProductToCart(pickedItem, quantity = 1) {
-    this.open(pickedItem.linkUrl);
     cy.get(`div[name="${pickedItem.name}"]`).parent().find('button').invoke('show')
       .contains('Add to Cart')
       .then((CTA) => {
