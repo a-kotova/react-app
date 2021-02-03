@@ -1,12 +1,13 @@
 import CheckoutPage from '../../../page-objects/checkoutPage';
 import products from '../../../fixtures/products.json';
 import ShopPage from '../../../page-objects/shopPage';
+import { pickRandomProduct } from '../../../utils/helpers';
 
 describe('Checkout', () => {
   let randomProduct;
 
   beforeEach(() => {
-    randomProduct = ShopPage.pickRandomProduct(products);
+    randomProduct = pickRandomProduct(products);
   });
 
   it('TA-20: Cart items count should be equal to number of added products', () => {
