@@ -32,6 +32,7 @@ describe('Checkout', () => {
     ShopPage.open('/checkout');
     CheckoutPage.increaseProductQuantity(randomProduct);
     CheckoutPage.getCartQuantity().should('eq', quantity + 1);
+    CheckoutPage.getTotal().should('eq', randomProduct.price * (quantity + 1));
   });
 
   it('TA-23: User is able to decrease product quantity', () => {
@@ -41,6 +42,7 @@ describe('Checkout', () => {
     ShopPage.open('/checkout');
     CheckoutPage.decreaseProductQuantity(randomProduct);
     CheckoutPage.getCartQuantity().should('eq', quantity - 1);
+    CheckoutPage.getTotal().should('eq', randomProduct.price * (quantity - 1));
   });
 
   it('TA-24: User is able to delete product from the cart by clicking on "X" CTA', () => {
@@ -49,6 +51,7 @@ describe('Checkout', () => {
     ShopPage.open('/checkout');
     CheckoutPage.deleteProduct(randomProduct);
     CheckoutPage.getCartQuantity().should('eq', 0);
+    CheckoutPage.getTotal().should('eq', 0);
   });
 
   it('TA-24.1: New item rows should not be added if user add same products', () => {
