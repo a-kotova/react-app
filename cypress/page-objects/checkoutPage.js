@@ -5,20 +5,12 @@ class CheckoutPage extends BasePage {
     return cy.contains('Total');
   }
 
-  get cartQuantity() {
-    return cy.contains('SHOP').parent().find('div:last-child > span');
-  }
-
   get paymentButton() {
     return cy.contains('Pay Now');
   }
 
   get paymentModal() {
     return cy.get('iframe[name="stripe_checkout_app"]');
-  }
-
-  getCartQuantity() {
-    return this.cartQuantity.then(($quantity) => cy.wrap(Number.parseInt($quantity.text(), 10)));
   }
 
   getIncreaseQuantityArrow(product) {

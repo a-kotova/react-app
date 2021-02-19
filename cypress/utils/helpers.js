@@ -1,10 +1,22 @@
-import Chance from 'chance';
 
-const chance = new Chance();
+export function pickRandomProducts(allProducts, quantity = 1) {
+  return Cypress._.sampleSize(allProducts, quantity);
+}
 
-export function pickRandomProduct(listOfProducts) {
-  const selectedCategory = chance.pickone(listOfProducts.collections);
-  const selectedItem = chance.pickone(selectedCategory.items);
-  selectedItem.linkUrl = selectedCategory.linkUrl;
-  return selectedItem;
+export function pickTargetProducts(productsList, preview = false) {
+  const products = [];
+  let items;
+  productsList.collections.forEach((collection) => {
+    if (preview) {
+      items = Cypress._.take(collection.items, 4);
+    } else {
+      items = collection.items;
+    }
+    items.forEach((item) => {
+      const product = item;
+      product.linkUrl = collection.linkUrl;
+      products.push(product);
+    });
+  });
+  return products;
 }
