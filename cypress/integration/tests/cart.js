@@ -10,13 +10,11 @@ describe('Cart tests', () => {
 
   beforeEach(() => {
     productsScope = pickTargetProducts(products);
-    cy.log(productsScope);
     randomProducts = pickRandomProducts(productsScope, quantity);
   });
 
   it('TA-26: Cart icon counter is updated properly when new product is added to the cart / Preview', () => {
     productsScope = pickTargetProducts(products, true);
-    cy.log(productsScope);
     randomProducts = pickRandomProducts(productsScope, quantity);
 
     ShopPage.open('/shop');
