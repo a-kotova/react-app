@@ -4,19 +4,11 @@ export function pickRandomProducts(allProducts, quantity = 1) {
 }
 
 export function pickTargetProducts(productsList, preview = false) {
-  const products = [];
-  let items;
-  productsList.collections.forEach((collection) => {
-    if (preview) {
-      items = Cypress._.take(collection.items, 4);
-    } else {
-      items = collection.items;
-    }
-    items.forEach((item) => {
-      const product = item;
-      product.linkUrl = collection.linkUrl;
-      products.push(product);
+  return productsList.collections.map((collection) => {
+    const items = preview ? Cypress._.take(collection.items, 4) : collection.items;
+    return items.map((item) => {
+      item.linkUrl = collection.linkUrl;
+      return item;
     });
-  });
-  return products;
+  }).flat();
 }
