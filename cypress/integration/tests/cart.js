@@ -1,29 +1,32 @@
 import CartPopUp from '../../page-objects/cartPopUp';
 import products from '../../fixtures/products.json';
-import { pickRandomProducts, pickTargetProducts } from '../../utils/helpers';
+import { pickTargetCategory, pickTargetProducts } from '../../utils/helpers';
 import ShopPage from '../../page-objects/shopPage';
 
 describe('Cart tests', () => {
-  let productsScope;
-  let randomProducts;
+  let productCategory,
+    targetProducts;
   const quantity = 3;
 
-  beforeEach(() => {
-    productsScope = pickTargetProducts(products);
-    randomProducts = pickRandomProducts(productsScope, quantity);
-  });
-
-  it('TA-26: Cart icon counter is updated properly when new product is added to the cart / Preview', () => {
-    productsScope = pickTargetProducts(products, true);
-    randomProducts = pickRandomProducts(productsScope, quantity);
+  it('TA-26: Cart icon counter is updated properly if add new products from "Shop" page', () => {
+    productCategory = pickTargetCategory(products);
+    targetProducts = pickTargetProducts(productCategory, quantity, true);
 
     ShopPage.open('/shop');
-    ShopPage.addProductToCartFromPreview(randomProducts);
+    targetProducts.forEach((targetProduct) => {
+      ShopPage.addProductToCart(targetProduct);
+    });
     CartPopUp.getCartQuantity().should('eq', quantity);
   });
 
-  it('TA-26.1: Cart icon counter is updated properly when new product is added to the cart / Overview', () => {
-    ShopPage.addProductToCartFromOverview(randomProducts);
+  it('TA-26.1: Cart icon counter is updated properly if add new products from category page', () => {
+    productCategory = pickTargetCategory(products);
+    targetProducts = pickTargetProducts(productCategory, quantity);
+
+    ShopPage.open(productCategory.linkUrl);
+    targetProducts.forEach((targetProduct) => {
+      ShopPage.addProductToCart(targetProduct);
+    });
     CartPopUp.getCartQuantity().should('eq', quantity);
   });
 });
