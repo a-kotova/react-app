@@ -3,6 +3,8 @@ import products from '../../../fixtures/products.json';
 import ShopPage from '../../../page-objects/shopPage';
 import { pickTargetCategory, pickTargetProducts } from '../../../utils/helpers';
 
+const { _ } = Cypress;
+
 describe('Checkout', () => {
   let targetCategory;
   let targetProduct;
@@ -13,14 +15,14 @@ describe('Checkout', () => {
   });
 
   it('TA-20: Cart items count should be equal to number of added products', () => {
-    const quantity = Cypress._.random(1, 12);
+    const quantity = _.random(1, 12);
     ShopPage.open(targetCategory.linkUrl);
     ShopPage.addProductToCart(targetProduct, quantity);
     CheckoutPage.getCartQuantity().should('eq', quantity);
   });
 
   it('TA-21: Cart total should be correct', () => {
-    const quantity = Cypress._.random(1, 12);
+    const quantity = _.random(1, 12);
     ShopPage.open(targetCategory.linkUrl);
     ShopPage.addProductToCart(targetProduct, quantity);
     ShopPage.open('/checkout');
@@ -28,7 +30,7 @@ describe('Checkout', () => {
   });
 
   it('TA-22: User is able to increase product quantity', () => {
-    const quantity = Cypress._.random(1, 11);
+    const quantity = _.random(1, 11);
     ShopPage.open(targetCategory.linkUrl);
     ShopPage.addProductToCart(targetProduct, quantity);
     ShopPage.open('/checkout');
@@ -38,7 +40,7 @@ describe('Checkout', () => {
   });
 
   it('TA-23: User is able to decrease product quantity', () => {
-    const quantity = Cypress._.random(2, 12);
+    const quantity = _.random(2, 12);
     ShopPage.open(targetCategory.linkUrl);
     ShopPage.addProductToCart(targetProduct, quantity);
     ShopPage.open('/checkout');
@@ -57,7 +59,7 @@ describe('Checkout', () => {
   });
 
   it('TA-24.1: New item rows should not be added if user add same products', () => {
-    const quantity = Cypress._.random(2, 12);
+    const quantity = _.random(2, 12);
     ShopPage.open(targetCategory.linkUrl);
     ShopPage.addProductToCart(targetProduct, quantity);
     ShopPage.open('/checkout');
