@@ -4,8 +4,8 @@ import { pickTargetCategory, pickTargetProducts } from '../../utils/helpers';
 import ShopPage from '../../page-objects/shopPage';
 
 describe('Cart tests', () => {
-  let productCategory,
-    targetProducts;
+  let productCategory;
+  let targetProducts;
   const quantity = 3;
 
   it('TA-26: Cart icon counter is updated properly if add new products from "Shop" page', () => {

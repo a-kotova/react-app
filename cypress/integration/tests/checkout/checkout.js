@@ -4,8 +4,8 @@ import ShopPage from '../../../page-objects/shopPage';
 import { pickTargetCategory, pickTargetProducts } from '../../../utils/helpers';
 
 describe('Checkout', () => {
-  let targetCategory,
-    targetProduct;
+  let targetCategory;
+  let targetProduct;
 
   beforeEach(() => {
     targetCategory = pickTargetCategory(products);
