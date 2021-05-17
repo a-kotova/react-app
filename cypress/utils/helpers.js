@@ -1,10 +1,12 @@
-import Chance from 'chance';
+const { _ } = Cypress;
 
-const chance = new Chance();
+export function pickTargetCategory(productsList) {
+  return _.sample(productsList.collections);
+}
 
-export function pickRandomProduct(listOfProducts) {
-  const selectedCategory = chance.pickone(listOfProducts.collections);
-  const selectedItem = chance.pickone(selectedCategory.items);
-  selectedItem.linkUrl = selectedCategory.linkUrl;
-  return selectedItem;
+export function pickTargetProducts(category, quantity = 1, isShopPage = false) {
+  const items = isShopPage
+    ? _.take(Cypress._.values(category.items), 4)
+    : _.values(category.items);
+  return _.sampleSize(items, quantity);
 }
