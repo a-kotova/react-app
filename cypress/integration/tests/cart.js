@@ -13,9 +13,7 @@ describe('Cart tests', () => {
     targetProducts = pickTargetProducts(productCategory, quantity, true);
 
     ShopPage.open('/shop');
-    targetProducts.forEach((targetProduct) => {
-      ShopPage.addProductToCart(targetProduct);
-    });
+    ShopPage.addProductToCart(targetProducts);
     CartPopUp.getCartQuantity().should('eq', quantity);
   });
 
@@ -24,9 +22,7 @@ describe('Cart tests', () => {
     targetProducts = pickTargetProducts(productCategory, quantity);
 
     ShopPage.open(productCategory.linkUrl);
-    targetProducts.forEach((targetProduct) => {
-      ShopPage.addProductToCart(targetProduct);
-    });
+    ShopPage.addProductToCart(targetProducts);
     CartPopUp.getCartQuantity().should('eq', quantity);
   });
 });
