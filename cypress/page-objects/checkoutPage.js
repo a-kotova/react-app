@@ -33,6 +33,10 @@ class CheckoutPage extends BasePage {
     return this.total.then(($total) => cy.wrap(Number.parseInt($total.text().match(/\d+$/)[0], 10)));
   }
 
+  getProductName(product) {
+    return cy.get(`div[data-test="checkout-item-${product.id}"]>span`).first().invoke('text');
+  }
+
   increaseProductQuantity(product) {
     this.getIncreaseQuantityArrow(product).click();
   }
