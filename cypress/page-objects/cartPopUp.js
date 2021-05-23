@@ -24,7 +24,7 @@ class CartPopUp extends BasePage {
   }
 
   getProductRowsNumber() {
-    return cy.get('div[data-test="header"]>div:last-child>div:first-child>div');
+    return cy.get('div[data-test^="cart-item"]');
   }
 
   clickGoToCheckoutCTA() {

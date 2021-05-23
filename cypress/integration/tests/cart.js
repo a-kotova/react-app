@@ -117,7 +117,7 @@ describe('Cart tests', () => {
     CartPopUp.emptyState.should('contain', emptyStates.emptyCartPopUp);
   });
 
-  it('TA-35: Cart items count should be equal to number of added products', () => {
+  it.only('TA-35: Cart items count should be equal to number of added products', () => {
     const quantity = _.random(1, 5);
     const productCategory = pickTargetCategory(products);
     const targetProducts = pickTargetProducts(productCategory, quantity);
