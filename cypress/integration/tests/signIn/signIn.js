@@ -1,6 +1,6 @@
 import SignInPage from '../../../page-objects/signInPage';
 import credentials from '../../../fixtures/credentials.json';
-import errorMessages from '../../../fixtures/errorMessages.js';
+import { errorMessages } from '../../../fixtures/informationalMessages';
 
 describe('Sign In', () => {
   beforeEach(() => {
