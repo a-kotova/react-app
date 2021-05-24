@@ -10,3 +10,13 @@ export function pickTargetProducts(category, quantity = 1, isShopPage = false) {
     : _.values(category.items);
   return _.sampleSize(items, quantity);
 }
+
+export function getSubString(givenString) {
+  const start = _.random(0, 4);
+  const finish = start + _.random(3, 10);
+  return givenString.substr(start, finish);
+}
+
+export function generateRandomSearchQuery() {
+  return Math.random().toString(36).substring(2, 7);
+}
