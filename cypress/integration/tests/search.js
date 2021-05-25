@@ -30,14 +30,14 @@ describe('Search', () => {
 
     ShopPage.open('');
     ShopPage.searchForProduct(invalidSearchQuery);
-    SearchResultsPage.anySearchResults.should('not.exist');
+    SearchResultsPage.searchResults.should('not.exist');
     SearchResultsPage.emptySERP.should('be.visible');
   });
 
   it('TA-38.1: User should not be able to submit empty query', () => {
     ShopPage.open('');
     ShopPage.searchForProduct('');
-    SearchResultsPage.anySearchResults.should('not.exist');
-    cy.url().should('eq', 'http://localhost:3000/');
+    SearchResultsPage.searchResults.should('not.exist');
+    cy.url().should('eq', Cypress.env('homeUrl'));
   });
 });

@@ -5,7 +5,7 @@ class Search extends BasePage {
     return cy.contains('Nothing found...');
   }
 
-  get anySearchResults() {
+  get searchResults() {
     return cy.get('div[data-test^=item-container]');
   }
 

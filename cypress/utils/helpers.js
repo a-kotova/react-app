@@ -12,9 +12,7 @@ export function pickTargetProducts(category, quantity = 1, isShopPage = false) {
 }
 
 export function getSubString(givenString) {
-  const start = _.random(0, 4);
-  const finish = start + _.random(3, 10);
-  return givenString.substr(start, finish);
+  return givenString.substr(_.random(0, givenString.length), _.random(0, givenString.length));
 }
 
 export function generateRandomSearchQuery() {
