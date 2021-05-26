@@ -117,7 +117,7 @@ describe('Cart tests', () => {
     CartPopUp.emptyState.should('contain', emptyStates.emptyCartPopUp);
   });
 
-  it.only('TA-35: Cart items count should be equal to number of added products', () => {
+  it('TA-35: Cart items count should be equal to number of added products', () => {
     const quantity = _.random(1, 5);
     const productCategory = pickTargetCategory(products);
     const targetProducts = pickTargetProducts(productCategory, quantity);
@@ -133,5 +133,16 @@ describe('Cart tests', () => {
     CartPopUp.expandCartPopUp();
     CartPopUp.clickGoToCheckoutCTA();
     cy.url().should('contain', '/checkout');
+  });
+
+  it('TA-38: User can add product to the cart from SERP', () => {
+    const productCategory = pickTargetCategory(products);
+    const [targetProduct] = pickTargetProducts(productCategory);
+
+    ShopPage.open('');
+    ShopPage.searchForProduct(targetProduct.name);
+    ShopPage.addProductToCart([targetProduct]);
+    CheckoutPage.open('/checkout');
+    CheckoutPage.getProductName(targetProduct).should('eq', targetProduct.name);
   });
 });

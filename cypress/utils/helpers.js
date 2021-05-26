@@ -10,3 +10,7 @@ export function pickTargetProducts(category, quantity = 1, isShopPage = false) {
     : _.values(category.items);
   return _.sampleSize(items, quantity);
 }
+
+export function getSubString(givenString) {
+  return givenString.substr(_.random(0, givenString.length), _.random(0, givenString.length));
+}
