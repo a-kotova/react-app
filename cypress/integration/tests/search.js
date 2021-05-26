@@ -5,6 +5,7 @@ import SearchResultsPage from '../../page-objects/searchResultsPage';
 import {
   pickTargetCategory, pickTargetProducts, getSubString,
 } from '../../utils/helpers';
+import { relativeUrls } from '../../utils/relativeUrls';
 
 const chance = new Chance();
 
@@ -41,6 +42,6 @@ describe('Search', () => {
     ShopPage.open('');
     ShopPage.searchForProduct('');
     SearchResultsPage.searchResults.should('not.exist');
-    cy.url().should('eq', Cypress.env('homeUrl'));
+    cy.url().should('eq', `${Cypress.config().baseUrl}${relativeUrls.home()}`);
   });
 });
