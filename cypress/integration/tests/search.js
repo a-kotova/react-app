@@ -1,9 +1,12 @@
+import Chance from 'chance';
 import ShopPage from '../../page-objects/shopPage';
 import products from '../../fixtures/products.json';
 import SearchResultsPage from '../../page-objects/searchResultsPage';
 import {
-  pickTargetCategory, pickTargetProducts, getSubString, generateRandomSearchQuery,
+  pickTargetCategory, pickTargetProducts, getSubString,
 } from '../../utils/helpers';
+
+const chance = new Chance();
 
 describe('Search', () => {
   it('TA-36: User can search for products by exact product name', () => {
@@ -26,10 +29,10 @@ describe('Search', () => {
   });
 
   it('TA-37: Empty SERP is displayed when user submits invalid search query', () => {
-    const invalidSearchQuery = generateRandomSearchQuery();
+    const searchQuery = chance.sentence({ words: 3 });
 
     ShopPage.open('');
-    ShopPage.searchForProduct(invalidSearchQuery);
+    ShopPage.searchForProduct(searchQuery);
     SearchResultsPage.searchResults.should('not.exist');
     SearchResultsPage.emptySERP.should('be.visible');
   });

@@ -14,7 +14,3 @@ export function pickTargetProducts(category, quantity = 1, isShopPage = false) {
 export function getSubString(givenString) {
   return givenString.substr(_.random(0, givenString.length), _.random(0, givenString.length));
 }
-
-export function generateRandomSearchQuery() {
-  return Math.random().toString(36).substring(2, 7);
-}
