@@ -1,5 +1,5 @@
 export const errorMessages = {
-  emptyEmailOrPasswordField: 'Please fill ingit this field.',
+  emptyEmailOrPasswordField: 'Please fill in this field.',
   invalidOrMissingPassword: 'The password is invalid or the user does not have a password.',
   unregisteredEmail: 'There is no user record corresponding to this identifier. The user may have been deleted.',
 };
