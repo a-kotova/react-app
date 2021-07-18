@@ -35,7 +35,7 @@ class SignInPage extends BasePage {
   }
 
   get signInError() {
-    return cy.get('[data-test="sign-in-error"]');
+    return cy.get('[data-test="signing-error"]');
   }
 
   get emptySignInEmailField() {
